@@ -1,0 +1,161 @@
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  html {
+    font-family: "Montserrat", sans-serif;
+  }
+  body {
+    background: #eee;
+    padding: 0 16px;
+  }
+
+  header {
+    background-color: #4CAF50;
+    margin: auto -16px;
+    padding: 16px 32px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  header h1 {
+    color: #fff;
+    font-family: "McLaren", cursive;
+    font-weight: 200;
+    font-size: 2em;
+    text-align: center;
+  }
+
+  footer {
+    position: fixed;
+    text-align: center;
+    bottom: 1;
+    width: 100%;
+    height: 2.5rem;
+  }
+
+  footer p {
+    color: #ccc;
+  }
+  .note {
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px #ccc;
+    padding: 10px;
+    width: 240px;
+    margin: 16px;
+    float: left;
+  }
+  .note h1 {
+    font-size: 1.1em;
+    margin-bottom: 6px;
+  }
+  .note p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .note button {
+    background-color: transparent;
+    color: #4CAF50;
+    border: none;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.3s;
+  }
+  .note:active{
+    transform: scale(0.95);
+  }
+  button:active{
+      transform: scale(0.95);
+    }
+
+  form {
+    position: relative;
+    width: 70%;
+    margin: 30px auto;
+    background: #fff;
+    padding: 15px;
+    border-radius: px;
+    box-shadow: 0 1px 5px rgb(138, 137, 137);
+  }
+  form input{
+    width: 100%;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1.7em;
+    resize: none;
+    outline: none;
+  }
+  form textarea {
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 4px;
+    width: 100%;
+    height: 700px;
+    padding: 4px;
+    outline: none;
+    font-size: 1.2em;
+    font-family: inherit;
+    resize: none;
+  }
+  form button {
+    position: absolute;
+    right: 18px;
+    bottom: -18px;
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    outline: none;
+  }
+  button.new {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    border-radius: 50%; 
+    color: white;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  button.new:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+  }
+  button.new:active {
+    background-color: #397d3d;
+    transform: scale(1);}
+  button.show {
+      background-color: #4CAF50; 
+      color: white; 
+      border: none;  
+      padding: 10px 20px; 
+      text-align: center; 
+      text-decoration: none; 
+      display: inline-block; 
+      font-size: 16px; 
+      margin: 4px 2px; 
+      cursor: pointer; 
+      border-radius: 5px; 
+      transition: background-color 0.3s; 
+    }
+    
+    button.show:hover {
+      background-color: #45a049; 
+    }
+    
