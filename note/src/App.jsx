@@ -3,14 +3,16 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
+import EditNote from "./EditNote";
 import { db } from "./config/firebase-config";
-import { getDocs , collection, addDoc, deleteDoc, doc } from "firebase/firestore";
+import { getDocs , collection, addDoc, deleteDoc, updateDoc, doc } from "firebase/firestore";
 
 
 
 function App() {
   const [notes, setNotes] = useState([]);
   const [showNotes, setShowNotes] = useState(true);
+  const [editingNote, setEditingNote] = useState(null)
 
   const notesCollectionRef = collection(db, "note");
 
@@ -46,10 +48,32 @@ function App() {
     console.error(err);
   }
   };
+
+  const updateNote = async (id, updatedNote) =>{
+    try{
+          const noteDoc = doc(db, "note", id)
+    await updateDoc(noteDoc, updatedNote)
+    setNotes((prevNotes) =>
+       prevNotes.map((note) => (note.id !== id ? {...note, ...updatedNote} : note)));
+    setEditingNote(null)
+    }
+    catch(err){
+      console.error(err)
+    }
+  };
+
+  const handleEdit = (id) =>{
+    const noteToEdit = notes.find((note) => note.id === id);
+    setEditingNote(noteToEdit);
+  };
+
+  const cancelEdit = () =>{
+    setEditingNote(null);;
+  }
+
   const showSubmittedNotes = showNotes ? notes.filter((note) => note.isSubmited)
   : notes;
-
-
+  console.log("Editing Note:", editingNote); 
 
   return (
     <div>
@@ -58,13 +82,19 @@ function App() {
       <button className="show" onClick={() => setShowNotes(!showNotes)}>
         {showNotes ? "Notes" : "Hide"}
       </button>
+      {editingNote && (
+              <EditNote currentNote={editingNote}
+              onSave={updateNote}
+              onCancel={cancelEdit} />
+      )}
       {showSubmittedNotes.map((noteItem) => (
         <Note
-          key={noteItem.id} // Using 'noteItem.id' instead of 'index'
+          key={noteItem.id}
           id={noteItem.id}
           title={noteItem.title}
           content={noteItem.content}
           onDelete={deleteNote}
+          onEdit ={handleEdit}
         />
       ))}
       <Footer />
