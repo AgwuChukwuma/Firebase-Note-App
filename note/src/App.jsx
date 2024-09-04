@@ -54,7 +54,7 @@ function App() {
           const noteDoc = doc(db, "note", id)
     await updateDoc(noteDoc, updatedNote)
     setNotes((prevNotes) =>
-       prevNotes.map((note) => (note.id !== id ? {...note, ...updatedNote} : note)));
+       prevNotes.map((note) => (note.id === id ? {...note, ...updatedNote} : note)));
     setEditingNote(null)
     }
     catch(err){
@@ -73,7 +73,6 @@ function App() {
 
   const showSubmittedNotes = showNotes ? notes.filter((note) => note.isSubmited)
   : notes;
-  console.log("Editing Note:", editingNote); 
 
   return (
     <div>

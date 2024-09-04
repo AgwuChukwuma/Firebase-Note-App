@@ -13,7 +13,7 @@
   }
 
   header {
-    background-color: #4CAF50;
+    background-color: #023505;
     margin: auto -16px;
     padding: 16px 32px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
@@ -86,6 +86,7 @@
   }
   form input{
     width: 100%;
+    margin-bottom: 1rem;
     border: 1px solid rgb(221, 221, 221);
     border-radius: 4px;
     font-family: inherit;
@@ -97,6 +98,7 @@
     border: 1px solid rgb(221, 221, 221);
     border-radius: 4px;
     width: 100%;
+    margin-bottom: 1rem;
     height: 700px;
     padding: 4px;
     outline: none;
@@ -104,11 +106,11 @@
     font-family: inherit;
     resize: none;
   }
-  form button {
+  .submit-btn{
     position: absolute;
     right: 18px;
     bottom: -18px;
-    background: #4CAF50;
+    background: #023505;
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -119,7 +121,7 @@
     outline: none;
   }
   button.new {
-    background-color: #4CAF50; 
+    background-color: #023505; 
     border: none;
     border-radius: 50%; 
     color: white;
@@ -134,14 +136,14 @@
   }
 
   button.new:hover {
-    background-color: #45a049;
+    background-color: #023505d7;
     transform: scale(1.1);
   }
   button.new:active {
     background-color: #397d3d;
     transform: scale(1);}
   button.show {
-      background-color: #4CAF50; 
+      background-color: #023505; 
       color: white; 
       border: none;  
       padding: 10px 20px; 
@@ -153,20 +155,44 @@
       cursor: pointer; 
       border-radius: 5px; 
       transition: background-color 0.3s; 
+    }  
+  button.show:hover {
+      background-color: #023505d7;
+      transform: scale(1.1); 
     }
-    
-    button.show:hover {
-      background-color: #45a049; 
-    }
-    /* Ensure buttons are visible */
-button {
-  display: block;
-  background-color: #007bff;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #0056b3;
-}
+  .submit{
+    position: absolute;
+    right: 18px;
+    bottom: -18px;
+    background: #023505;
+    color: #fff;
+    border: none;
+    border-radius:10%;
+    width: 56px;
+    height: 36px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    outline: none;
+  }
+  .submit-cancel{
+    position: absolute;
+    left: 18px;
+    bottom: -18px;
+    background: #023505;
+    color: #fff;
+    border: none;
+    border-radius:10%;
+    width: 56px;
+    height: 36px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    outline: none;
+  }
+  button.submit-cancel:hover {
+    background-color: #023505d7;
+    transform: scale(1.1);
+  }
+  button.submit:hover {
+    background-color: #023505d7;
+    transform: scale(1.1);
+  }

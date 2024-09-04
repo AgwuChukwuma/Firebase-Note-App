@@ -25,8 +25,8 @@ function EditNote({ currentNote, onSave, onCancel }) {
                     placeholder="Content"
                     onChange={(e) => setContent(e.target.value)}
                 />
-                <button type="submit">Update</button>
-                <button type="button" onClick={onCancel}>Cancel</button>
+                <button className="submit" onClick={onSave}>Update</button>
+                <button className="submit-cancel" onClick={onCancel}>Cancel</button>
             </form>
         </div>
     );
