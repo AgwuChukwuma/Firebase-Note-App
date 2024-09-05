@@ -28,7 +28,7 @@
   }
 
   footer {
-    position: fixed;
+    position: absolute;
     text-align: center;
     bottom: 28px;
     width: 100%;

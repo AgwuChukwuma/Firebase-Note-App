@@ -65,10 +65,11 @@ function App() {
   const handleEdit = (id) =>{
     const noteToEdit = notes.find((note) => note.id === id);
     setEditingNote(noteToEdit);
+    setShowNotes(false);
   };
 
   const cancelEdit = () =>{
-    setEditingNote(null);;
+    setEditingNote(null);
   }
 
   const showSubmittedNotes = showNotes ? notes.filter((note) => note.isSubmited)
@@ -77,10 +78,12 @@ function App() {
   return (
     <div>
       <Header />
-      <CreateArea onAdd={addNote} />
       <button className="show" onClick={() => setShowNotes(!showNotes)}>
         {showNotes ? "Notes" : "Hide"}
-      </button>
+     </button>  
+    {showNotes ? (
+          <>
+          <CreateArea onAdd={addNote} />
       {editingNote && (
               <EditNote currentNote={editingNote}
               onSave={updateNote}
@@ -96,6 +99,21 @@ function App() {
           onEdit ={handleEdit}
         />
       ))}
+          </>
+    ) : (
+      <>
+      {notes.map ((noteItem) => (
+        <Note
+        key={noteItem.id}
+        id={noteItem.id}
+        title={noteItem.title}
+        content={noteItem.content}
+        onDelete={deleteNote}
+        onEdit ={handleEdit}
+        />
+      ))}
+      </>
+    )}
       <Footer />
     </div>
   );
