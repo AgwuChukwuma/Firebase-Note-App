@@ -56,6 +56,7 @@ function App() {
     setNotes((prevNotes) =>
        prevNotes.map((note) => (note.id === id ? {...note, ...updatedNote} : note)));
     setEditingNote(null)
+    setShowNotes(true);
     }
     catch(err){
       console.error(err)
@@ -70,6 +71,7 @@ function App() {
 
   const cancelEdit = () =>{
     setEditingNote(null);
+    setShowNotes(true);
   }
 
   const showSubmittedNotes = showNotes ? notes.filter((note) => note.isSubmited)
@@ -81,39 +83,30 @@ function App() {
       <button className="show" onClick={() => setShowNotes(!showNotes)}>
         {showNotes ? "Notes" : "Hide"}
      </button>  
-    {showNotes ? (
+        {editingNote ? (
+          <EditNote 
+          currentNote = {editingNote}
+          onSave = {updateNote}
+          onCancel={cancelEdit}
+          />
+        ) : (
           <>
-          <CreateArea onAdd={addNote} />
-      {editingNote && (
-              <EditNote currentNote={editingNote}
-              onSave={updateNote}
-              onCancel={cancelEdit} />
-      )}
-      {showSubmittedNotes.map((noteItem) => (
-        <Note
-          key={noteItem.id}
-          id={noteItem.id}
-          title={noteItem.title}
-          content={noteItem.content}
-          onDelete={deleteNote}
-          onEdit ={handleEdit}
-        />
-      ))}
+            {showNotes &&
+            <CreateArea onAdd = {addNote} />
+            }
+            {showSubmittedNotes.map((noteItem) => (
+              <Note
+              key = {noteItem.id}
+              id = {noteItem.id}
+              title = {noteItem.title}
+              content = {noteItem.content}
+              onDelete = {deleteNote}
+              onEdit = {handleEdit}
+              />
+            ))}
           </>
-    ) : (
-      <>
-      {notes.map ((noteItem) => (
-        <Note
-        key={noteItem.id}
-        id={noteItem.id}
-        title={noteItem.title}
-        content={noteItem.content}
-        onDelete={deleteNote}
-        onEdit ={handleEdit}
-        />
-      ))}
-      </>
-    )}
+        
+        )}
       <Footer />
     </div>
   );
