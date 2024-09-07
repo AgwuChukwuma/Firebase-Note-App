@@ -2,22 +2,22 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 function EditNote({
-    currentNote, // the note being edited
-    onSave,     // function to call when saving the edited note
-    onCancel    // function to call when canceling the edit
+    currentNote,
+    onSave,   
+    onCancel  
 }) {
     const [title, setTitle] = useState(currentNote.title);
     const [content, setContent] = useState(currentNote.content);
 
-    // Function to handle form submission
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        onSave(currentNote.id, { title, content }); // Save edited note
+        onSave(currentNote.id, { title, content });
     };
 
-    // Function to handle cancel action
+    
     const handleCancel = () => {
-        onCancel(); // Notify parent component that editing has been canceled
+        onCancel(); 
     };
 
     return (
