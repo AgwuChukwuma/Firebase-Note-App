@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import Footer from "./Footer";
 
 function EditNote({
     currentNote,
@@ -44,6 +45,7 @@ function EditNote({
                     Cancel
                 </button>
             </form>
+            <Footer/>
         </div>
     );
 }

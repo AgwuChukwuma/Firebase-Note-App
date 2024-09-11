@@ -1,5 +1,6 @@
 import { useState } from "react";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
+import Footer from "./Footer";
 
 
 function CreateArea(props) {
@@ -48,6 +49,7 @@ function CreateArea(props) {
         />
         <button className="submit-btn" onClick={submitNote}>✔</button>
       </form>
+      <Footer/>
     </div>
   );
 }
