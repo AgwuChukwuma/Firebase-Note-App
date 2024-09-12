@@ -1,20 +1,11 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
 
 function Note(props) {
-  
-  const [timestamp, setTimestamp] = useState("");
   
   const truncate =(text, wordLimit) =>{
     const words = text.split(' ');
     return words.length > wordLimit ? words.slice (0, wordLimit).join(' ') + "...." : text;
   };
-
-  useEffect(() => {
-
- 
-    setTimestamp(new Date().toLocaleString());
-  }, []);
 
   function handleClick() {
     props.onDelete(props.id);
@@ -31,7 +22,7 @@ function Note(props) {
 
       <button onClick={del}>Edit</button>
       <button onClick={handleClick}>DELETE</button>
-      <p className="timestamp">{timestamp}</p>
+      <p className="timestamp">{props.timestamp}</p>
     </div>
   );
 }
@@ -40,6 +31,7 @@ Note.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+  timestamp: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
 };

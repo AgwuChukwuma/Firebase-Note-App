@@ -32,8 +32,10 @@ function App() {
 
   const addNote = async (newNote) => {
     try{
-    const docRef = await addDoc(notesCollectionRef, newNote);
-    setNotes((prevNotes) => [...prevNotes, {...newNote, id: docRef.id}]);
+    const docRef = await addDoc(notesCollectionRef, {newNote,
+      timestamp: new Date().toLocaleString(),
+    });
+    setNotes((prevNotes) => [...prevNotes, {...newNote, id: docRef.id, timestamp: new Date().toLocaleString()}]);
   }catch(err){
     console.error(err);
   }
@@ -52,9 +54,11 @@ function App() {
   const updateNote = async (id, updatedNote) =>{
     try{
           const noteDoc = doc(db, "note", id)
-    await updateDoc(noteDoc, updatedNote)
+    await updateDoc(noteDoc, {updatedNote, 
+      timestamp: new Date().toLocaleString(),
+    });
     setNotes((prevNotes) =>
-       prevNotes.map((note) => (note.id === id ? {...note, ...updatedNote} : note)));
+       prevNotes.map((note) => (note.id === id ? {...note, ...updatedNote, timestamp: new Date().toLocaleString() } : note)));
     setEditingNote(null)
     setShowNotes(true);
     }
@@ -100,6 +104,7 @@ function App() {
               id = {noteItem.id}
               title = {noteItem.title}
               content = {noteItem.content}
+              timestamp= {noteItem.timestamp}
               onDelete = {deleteNote}
               onEdit = {handleEdit}
               />
