@@ -21,7 +21,6 @@ function Note(props) {
   }
 
   function del() {
-    setTimestamp(new Date().toLocaleString());
     props.onEdit(props.id);
   }
 
