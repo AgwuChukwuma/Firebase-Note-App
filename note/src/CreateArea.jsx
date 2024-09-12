@@ -32,7 +32,7 @@ function CreateArea(props) {
 
   return (
     <div>
-        <button className="new">+</button>
+        <button className="new" onClick={submitNote}>+</button>
       <form>
         <input
           name="title"
