@@ -7,11 +7,11 @@ function Note(props) {
     return words.length > wordLimit ? words.slice (0, wordLimit).join(' ') + "...." : text;
   };
 
-  function handleClick() {
+  function handleDelete() {
     props.onDelete(props.id);
   }
 
-  function del() {
+  function handleEdit() {
     props.onEdit(props.id);
   }
 
@@ -20,8 +20,8 @@ function Note(props) {
       <h1>{props.title}</h1>
       <p>{truncate(props.content, 20)}</p>
 
-      <button onClick={del}>Edit</button>
-      <button onClick={handleClick}>DELETE</button>
+      <button onClick={handleEdit}>Edit</button>
+      <button onClick={handleDelete}>DELETE</button>
       <p className="timestamp">{props.timestamp}</p>
     </div>
   );
