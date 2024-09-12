@@ -2,12 +2,18 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
 function Note(props) {
+  
   const [timestamp, setTimestamp] = useState("");
+  
+  const truncate =(text, wordLimit) =>{
+    const words = text.split(' ');
+    return words.length > wordLimit ? words.slice (0, wordLimit).join(' ') + "...." : text;
+  };
 
   useEffect(() => {
 
-    const date = new Date();
-    setTimestamp(date.toLocaleString());
+ 
+    setTimestamp(new Date().toLocaleString());
   }, []);
 
   function handleClick() {
@@ -15,16 +21,18 @@ function Note(props) {
   }
 
   function del() {
+    setTimestamp(new Date().toLocaleString());
     props.onEdit(props.id);
   }
 
   return (
     <div className="note">
       <h1>{props.title}</h1>
-      <p>{props.content}</p>
+      <p>{truncate(props.content, 20)}</p>
 
       <button onClick={del}>Edit</button>
-      <button onClick={handleClick}>DELETE</button>      <p className="timestamp">{timestamp}</p>
+      <button onClick={handleClick}>DELETE</button>
+      <p className="timestamp">{timestamp}</p>
     </div>
   );
 }
