@@ -4,7 +4,7 @@ function Note(props) {
   
   const truncate =(text, wordLimit) =>{
     const words = text.split(' ');
-    return words.length > wordLimit ? words.slice (0, wordLimit).join(' ') + "...." : text;
+    return words.length > wordLimit ? words.slice (0, wordLimit).join(' ') + "..." : text;
   };
 
   function handleDelete() {
